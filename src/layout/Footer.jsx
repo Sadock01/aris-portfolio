@@ -26,7 +26,7 @@ export const Footer = () => {
               PM<span className="text-primary">.</span>
             </a>
             <p className="text-sm text-muted-foreground mt-2">
-              © {currentYear} Pedro Machado. All rights reserved.
+              © {currentYear} Sadock Tohon. All rights reserved.
             </p>
           </div>
 
