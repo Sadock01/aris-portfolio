@@ -1,89 +1,134 @@
-import { Button } from "@/components/Button";
-import { Menu, X } from "lucide-react";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { PROFILE_LINKS } from "@/constants/profile";
+import { useLanguage } from "@/i18n/LanguageContext";
+import { Github, Linkedin, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
-const navLinks = [
-  { href: "#about", label: "About" },
-  { href: "#projects", label: "Projects" },
-  { href: "#experience", label: "Experience" },
-  { href: "#testimonials", label: "Testimonials" },
-];
+const navLinks = {
+  en: [
+    { href: "#hero", label: "Home" },
+    { href: "#about", label: "About" },
+    { href: "#volunteering", label: "Volunteering" },
+    { href: "#journey", label: "Journey" },
+    { href: "#contact", label: "Contact" },
+  ],
+  fr: [
+    { href: "#hero", label: "Accueil" },
+    { href: "#about", label: "A propos" },
+    { href: "#volunteering", label: "Volontariat" },
+    { href: "#journey", label: "Parcours" },
+    { href: "#contact", label: "Contact" },
+  ],
+};
 
 export const Navbar = () => {
+  const { language } = useLanguage();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("hero");
+  const links = navLinks[language];
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+    const sectionIds = links.map((l) => l.href.replace("#", ""));
+
+    const sync = () => {
+      const offset = window.innerHeight * 0.35;
+      let candidate = "hero";
+      sectionIds.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= window.scrollY + offset) candidate = id;
+      });
+      setActiveSection(candidate);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    sync();
+    window.addEventListener("scroll", sync, { passive: true });
+    window.addEventListener("resize", sync);
+    return () => {
+      window.removeEventListener("scroll", sync);
+      window.removeEventListener("resize", sync);
+    };
+  }, [links]);
 
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const closeMenu = () => setIsMobileMenuOpen(false);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 transition-all duration-500 ${
-        isScrolled ? "glass-strong py-3" : "bg-transparent py-5"
-      }  z-50`}
-    >
-      <nav className="container mx-auto px-6 flex items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/70 backdrop-blur-md">
+      <nav className="hero-container flex h-[4.5rem] items-center justify-between">
         <a
-          href="#"
-          className="text-xl font-bold tracking-tight hover:text-primary"
+          href="#hero"
+          className="font-serif text-base tracking-tight hover:opacity-60 transition-opacity duration-300 shrink-0"
+          aria-label="Sadock Tohon"
         >
-          PM<span className="text-primary">.</span>
+          ST<span className="text-muted-foreground">.</span>
         </a>
 
-        {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-1">
-          <div className="glass rounded-full px-2 py-1 flex items-center gap-1">
-            {navLinks.map((link, index) => (
+        <div className="hidden lg:flex items-center gap-8 ml-auto mr-8">
+          {links.map((link) => {
+            const isActive = activeSection === link.href.replace("#", "");
+            return (
               <a
+                key={link.href}
                 href={link.href}
-                key={index}
-                className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground rounded-full hover:bg-surface"
+                onClick={closeMenu}
+                className={`nav-link ${isActive ? "is-active text-foreground" : "text-muted-foreground"}`}
               >
                 {link.label}
               </a>
-            ))}
+            );
+          })}
+        </div>
+
+        <div className="hidden lg:flex items-center gap-5 shrink-0">
+          <LanguageSwitcher />
+          <div className="flex items-center gap-4 text-muted-foreground">
+            <a
+              href={PROFILE_LINKS.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foreground transition-colors duration-300"
+              aria-label="GitHub"
+            >
+              <Github size={17} strokeWidth={1.5} />
+            </a>
+            <a
+              href={PROFILE_LINKS.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foreground transition-colors duration-300"
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={17} strokeWidth={1.5} />
+            </a>
           </div>
         </div>
 
-        {/* CTA Button */}
-        <div className="hidden md:block">
-          <Button size="sm">Contact Me</Button>
-        </div>
-
-        {/* Mobile Menu Button */}
         <button
-          className="md:hidden p-2 text-foreground cursor-pointer"
-          onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+          className="lg:hidden p-2 text-foreground ml-auto"
+          onClick={() => setIsMobileMenuOpen((p) => !p)}
+          aria-label="Menu"
         >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </nav>
 
-      {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden glass-strong animate-fade-in">
-          <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
-            {navLinks.map((link, index) => (
+        <div className="lg:hidden border-t border-border bg-background/95 backdrop-blur-xl">
+          <div className="hero-container py-8 flex flex-col gap-5">
+            {links.map((link) => (
               <a
+                key={link.href}
                 href={link.href}
-                key={index}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-lg text-muted-foreground hover:text-foreground py-2"
+                onClick={closeMenu}
+                className={`text-base transition-colors ${
+                  activeSection === link.href.replace("#", "")
+                    ? "text-foreground"
+                    : "text-muted-foreground"
+                }`}
               >
                 {link.label}
               </a>
             ))}
-
-            <Button onClick={() => setIsMobileMenuOpen(false)}>
-              Contact Me
-            </Button>
+            <LanguageSwitcher />
           </div>
         </div>
       )}

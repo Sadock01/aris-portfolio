@@ -1,143 +1,211 @@
-import { ArrowUpRight, Github } from "lucide-react";
-import { AnimatedBorderButton } from "@/components/AnimatedBorderButton";
-const projects = [
-  {
-    title: "Fintech Dashboard",
-    description:
-      "A comprehensive financial analytics platform with real-time data visualization, portfolio management, and AI-powered insights.",
-    image: "/projects/project1.png",
-    tags: ["React", "Typescript", "NodeJS"],
-    link: "#",
-    github: "#",
-  },
-  {
-    title: "E-Commerce Platform",
-    description:
-      "A full-featured e-commerce solution with inventory management, payment processing, and analytics dashboard.",
-    image: "/projects/project2.png",
-    tags: ["Next.js", "Stripe", "PostgreSQL", "Tailwind"],
-    link: "#",
-    github: "#",
-  },
-  {
-    title: "AI Writing Assistant",
-    description:
-      "An intelligent writing tool powered by GPT-4, helping users create better content faster.",
-    image: "/projects/project3.png",
-    tags: ["React", "OpenAI", "Python", "FastAPI"],
-    link: "#",
-    github: "#",
-  },
-  {
-    title: "Project Management Tool",
-    description:
-      "A collaborative workspace for teams with real-time updates, task tracking, and integrations.",
-    image: "/projects/project4.png",
-    tags: ["Next.js", "Socket.io", "MongoDB", "Redis"],
-    link: "#",
-    github: "#",
-  },
-];
+import { SectionLabel } from "@/components/SectionLabel";
+import { useLanguage } from "@/i18n/LanguageContext";
+import erpImage from "@/assets/projects/localhost_5173_.png";
+
+const projectsByLanguage = {
+  en: [
+    {
+      number: "01",
+      title: "ERP Nodus",
+      client: "Private Client · Remote · 2025",
+      metric: "Full-stack ERP",
+      metricDetail: "Next.js + Django + PostgreSQL business platform",
+      tags: ["Next.js", "Django", "PostgreSQL", "Backend"],
+      image: erpImage,
+      link: "#",
+    },
+    {
+      number: "02",
+      title: "Crypto Trading Platform",
+      client: "Personal Project · 2025",
+      metric: "Fintech UI",
+      metricDetail: "Dashboard analytics and market-focused trading workflows",
+      tags: ["React", "Fintech", "Dashboard", "UI/UX"],
+      image: erpImage,
+      link: "#",
+    },
+    {
+      number: "03",
+      title: "Portfolio Platform",
+      client: "Personal Project · 2026",
+      metric: "Live",
+      metricDetail: "Multilingual portfolio with contact automation and NGO volunteering",
+      tags: ["React", "Tailwind", "EmailJS", "i18n"],
+      image: erpImage,
+      link: "#",
+    },
+    {
+      number: "04",
+      title: "Enterprise Internship Projects",
+      client: "Local Technology Company · Feb 2025 - Apr 2026",
+      metric: "1 yr 3 mo",
+      metricDetail: "Web/mobile maintenance, mail server setup, shop management platform",
+      tags: ["Web", "Mobile", "Testing", "DevOps"],
+      image: erpImage,
+      link: "#",
+    },
+  ],
+  fr: [
+    {
+      number: "01",
+      title: "ERP Nodus",
+      client: "Client prive · Remote · 2025",
+      metric: "ERP full-stack",
+      metricDetail: "Plateforme metier Next.js + Django + PostgreSQL",
+      tags: ["Next.js", "Django", "PostgreSQL", "Backend"],
+      image: erpImage,
+      link: "#",
+    },
+    {
+      number: "02",
+      title: "Plateforme Crypto Trading",
+      client: "Projet personnel · 2025",
+      metric: "UI Fintech",
+      metricDetail: "Dashboard analytics et workflows de trading orientes marche",
+      tags: ["React", "Fintech", "Dashboard", "UI/UX"],
+      image: erpImage,
+      link: "#",
+    },
+    {
+      number: "03",
+      title: "Portfolio Platform",
+      client: "Projet personnel · 2026",
+      metric: "Live",
+      metricDetail: "Portfolio multilingue avec contact automatise et volontariat ONG",
+      tags: ["React", "Tailwind", "EmailJS", "i18n"],
+      image: erpImage,
+      link: "#",
+    },
+    {
+      number: "04",
+      title: "Projets de stage entreprise",
+      client: "Entreprise locale · Fev 2025 - Avr 2026",
+      metric: "1 an 3 mois",
+      metricDetail: "Maintenance web/mobile, serveur mail, plateforme shop management",
+      tags: ["Web", "Mobile", "Tests", "DevOps"],
+      image: erpImage,
+      link: "#",
+    },
+  ],
+  ja: [
+    {
+      number: "01",
+      title: "ERP Nodus",
+      client: "個人クライアント · リモート · 2025",
+      metric: "フルスタックERP",
+      metricDetail: "Next.js + Django + PostgreSQL の業務プラットフォーム",
+      tags: ["Next.js", "Django", "PostgreSQL", "Backend"],
+      image: erpImage,
+      link: "#",
+    },
+    {
+      number: "02",
+      title: "暗号資産トレーディング",
+      client: "個人プロジェクト · 2025",
+      metric: "Fintech UI",
+      metricDetail: "ダッシュボード分析とマーケット志向の取引ワークフロー",
+      tags: ["React", "Fintech", "Dashboard", "UI/UX"],
+      image: erpImage,
+      link: "#",
+    },
+    {
+      number: "03",
+      title: "Portfolio Platform",
+      client: "個人プロジェクト · 2026",
+      metric: "Live",
+      metricDetail: "多言語対応ポートフォリオとNGOボランティア支援",
+      tags: ["React", "Tailwind", "EmailJS", "i18n"],
+      image: erpImage,
+      link: "#",
+    },
+    {
+      number: "04",
+      title: "企業インターン案件",
+      client: "ローカルIT企業 · 2025年2月 - 2026年4月",
+      metric: "1年3か月",
+      metricDetail: "Web/モバイル保守、メールサーバー、ショップ管理プラットフォーム",
+      tags: ["Web", "Mobile", "Testing", "DevOps"],
+      image: erpImage,
+      link: "#",
+    },
+  ],
+};
 
 export const Projects = () => {
+  const { language } = useLanguage();
+  const projects = projectsByLanguage[language];
+  const labels = {
+    en: {
+      label: "Selected projects",
+      title: "Web, mobile, and fintech products — shipped with real impact.",
+      all: "All projects",
+    },
+    fr: {
+      label: "Projets selectionnes",
+      title: "Produits web, mobile et fintech — livres avec un vrai impact.",
+      all: "Tous les projets",
+    },
+    ja: {
+      label: "厳選プロジェクト",
+      title: "Web、モバイル、Fintech — 実インパクトのあるプロダクト。",
+      all: "すべてのプロジェクト",
+    },
+  }[language];
+
   return (
-    <section id="projects" className="py-32 relative overflow-hidden">
-      {/* Bg glows */}
-      <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 left-0 w-64 h-64 bg-highlight/5 rounded-full blur-3xl" />
-      <div className="container mx-auto px-6 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mx-auto max-w-3xl mb-16">
-          <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase animate-fade-in">
-            Featured Work
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-secondary-foreground">
-            Projects that
-            <span className="font-serif italic font-normal text-white">
-              {" "}
-              make an impact.
-            </span>
-          </h2>
-          <p className="text-muted-foreground animate-fade-in animation-delay-200">
-            A selection of my recent work, from complex web applications to
-            innovative tools that solve real-world problems.
-          </p>
+    <section id="work" className="border-b border-border">
+      <div className="site-container py-16 md:py-24">
+        <SectionLabel>{labels.label}</SectionLabel>
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+          <h2 className="section-title max-w-3xl">{labels.title}</h2>
+          <a href="https://github.com/Sadock01/" className="editorial-link shrink-0">
+            {labels.all} →
+          </a>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, idx) => (
-            <div
-              key={idx}
-              className="group glass rounded-2xl overflow-hidden animate-fade-in md:row-span-1"
-              style={{ animationDelay: `${(idx + 1) * 100}ms` }}
+        <div>
+          {projects.map((project) => (
+            <a
+              key={project.number}
+              href={project.link}
+              className="project-card group grid md:grid-cols-[80px_1fr_200px] gap-6 md:gap-10 items-start"
             >
-              {/* Image */}
-              <div className="relative overflow-hidden aspect-video">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div
-                  className="absolute inset-0 
-                bg-gradient-to-t from-card via-card/50
-                 to-transparent opacity-60"
-                />
-                {/* Overlay Links */}
-                <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <a
-                    href={project.link}
-                    className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
-                  >
-                    <ArrowUpRight className="w-5 h-5" />
-                  </a>
-                  <a
-                    href={project.github}
-                    className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
-                  >
-                    <Github className="w-5 h-5" />
-                  </a>
-                </div>
-              </div>
+              <span className="font-serif text-2xl text-muted-foreground">
+                {project.number}
+              </span>
 
-              {/* Content */}
-              <div className="p-6 space-y-4">
-                <div className="flex items-start justify-between">
-                  <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
+              <div>
+                <div className="flex flex-wrap items-center gap-3 mb-2">
+                  <h3 className="text-xl md:text-2xl font-medium group-hover:underline underline-offset-4">
                     {project.title}
                   </h3>
-                  <ArrowUpRight
-                    className="w-5 h-5 
-                  text-muted-foreground group-hover:text-primary
-                   group-hover:translate-x-1 
-                   group-hover:-translate-y-1 transition-all"
+                  <span className="text-muted-foreground text-sm">↗</span>
+                </div>
+                <p className="text-sm text-muted-foreground mb-4">{project.client}</p>
+                <div className="overflow-hidden border border-border mb-4 max-w-xl">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full aspect-video object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
                   />
                 </div>
-                <p className="text-muted-foreground text-sm">
-                  {project.description}
-                </p>
                 <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag, tagIdx) => (
-                    <span
-                      key={tagIdx}
-                      className="px-4 py-1.5 rounded-full bg-surface text-xs font-medium border border-border/50 text-muted-foreground hover:border-primary/50 hover:text-primary transition-all duration-300"
-                    >
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="tag">
                       {tag}
                     </span>
                   ))}
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
 
-        {/* View All CTA */}
-        <div className="text-center mt-12 animate-fade-in animation-delay-500">
-          <AnimatedBorderButton>
-            View All Projects
-            <ArrowUpRight className="w-5 h-5" />
-          </AnimatedBorderButton>
+              <div className="md:text-right">
+                <p className="font-serif text-2xl md:text-3xl">{project.metric}</p>
+                <p className="text-sm text-muted-foreground mt-2 max-w-[200px] md:ml-auto">
+                  {project.metricDetail}
+                </p>
+              </div>
+            </a>
+          ))}
         </div>
       </div>
     </section>

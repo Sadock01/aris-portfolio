@@ -1,99 +1,92 @@
-import { Code2, Lightbulb, Rocket, Users } from "lucide-react";
-
-const highlights = [
-  {
-    icon: Code2,
-    title: "Clean Code",
-    description:
-      "Writing maintainable, scalable code that stands the test of time.",
-  },
-  {
-    icon: Rocket,
-    title: "Performance",
-    description:
-      "Optimizing for speed and delivering lightning-fast user experiences.",
-  },
-  {
-    icon: Users,
-    title: "Collaboration",
-    description: "Working closely with teams to bring ideas to life.",
-  },
-  {
-    icon: Lightbulb,
-    title: "Innovation",
-    description:
-      "Staying ahead with the latest technologies and best practices.",
-  },
-];
+import { Reveal } from "@/components/Reveal";
+import { SectionLabel } from "@/components/SectionLabel";
+import { useLanguage } from "@/i18n/LanguageContext";
+import sadPortrait from "@/assets/sad.webp";
 
 export const About = () => {
+  const { language } = useLanguage();
+
+  const content = {
+    en: {
+      label: "About",
+      title: "I build for teams, users, and communities that need reliable software.",
+      body: [
+        "I'm a software engineer based in Abomey-Calavi, Benin, specializing in Flutter, React, Next.js, and Django. I turn product ideas into scalable web and mobile solutions — from ERP systems to fintech interfaces.",
+        "Beyond commercial work, I dedicate time to tech volunteering: building digital tools for NGOs at no development cost, so organizations can focus on their mission while only covering hosting.",
+      ],
+      skills: [
+        "Software Engineering",
+        "Flutter",
+        "React / Next.js",
+        "Django",
+        "PostgreSQL",
+        "Tech Volunteering",
+      ],
+      locationLine1: "Abomey-Calavi",
+      locationLine2: "Benin",
+    },
+    fr: {
+      label: "A propos",
+      title:
+        "Je construis pour les equipes, les utilisateurs et les communautes qui ont besoin de logiciels fiables.",
+      body: [
+        "Je suis ingenieur logiciel base a Abomey-Calavi, Benin, specialise en Flutter, React, Next.js et Django. Je transforme les idees produit en solutions web et mobile evolutives.",
+        "En plus du travail commercial, je consacre du temps au tech volunteering : creer des outils numeriques pour les ONG sans frais de developpement.",
+      ],
+      skills: [
+        "Ingenierie logicielle",
+        "Flutter",
+        "React / Next.js",
+        "Django",
+        "PostgreSQL",
+        "Volontariat Tech",
+      ],
+      locationLine1: "Abomey-Calavi",
+      locationLine2: "Benin",
+    },
+  }[language];
+
   return (
-    <section id="about" className="py-32 relative overflow-hidden">
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Column */}
-          <div className="space-y-8">
-            <div className="animate-fade-in">
-              <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase">
-                About Me
-              </span>
-            </div>
-
-            <h2 className="text-4xl md:text-5xl font-bold leading-tight animate-fade-in animation-delay-100 text-secondary-foreground">
-              Building the future,
-              <span className="font-serif italic font-normal text-white">
-                {" "}
-                one component at a time.
-              </span>
-            </h2>
-
-            <div className="space-y-4 text-muted-foreground animate-fade-in animation-delay-200">
-              <p>
-                I'm a passionate software engineer with over 5 years of
-                experience crafting digital products that make a difference. My
-                journey started with a curiosity for how things work on the web,
-                and it has evolved into a deep expertise in modern frontend
-                technologies.
-              </p>
-              <p>
-                I specialize in React, Next.js, and TypeScript, building
-                everything from sleek landing pages to complex enterprise
-                applications. My approach combines technical excellence with a
-                keen eye for design and user experience.
-              </p>
-              <p>
-                When I'm not coding, you'll find me exploring new technologies,
-                contributing to open-source projects, or sharing knowledge with
-                the developer community.
-              </p>
-            </div>
-
-            <div className="glass rounded-2xl p-6 glow-border animate-fade-in animation-delay-300">
-              <p className="text-lg font-medium italic text-foreground">
-                "My mission is to create digital experiences that are not just
-                functional, but truly delightful — products that users love to
-                use and developers love to maintain."
-              </p>
-            </div>
-          </div>
-
-          {/* Right Column - Hilights */}
-          <div className="grid sm:grid-cols-2 gap-6">
-            {highlights.map((item, idx) => (
-              <div
-                key={idx}
-                className="glass p-6 rounded-2xl animate-fade-in"
-                style={{ animationDelay: `${(idx + 1) * 100}ms` }}
-              >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 hover:bg-primary/20">
-                  <item.icon className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-                <p className="text-sm text-muted-foreground">
-                  {item.description}
-                </p>
+    <section id="about" className="border-b border-border py-20 md:py-32">
+      <div className="site-container">
+        <div className="grid lg:grid-cols-[minmax(0,400px)_1fr] gap-12 lg:gap-20 xl:gap-24 items-start">
+          <Reveal className="w-full max-w-[400px] mx-auto lg:mx-0">
+            <div className="about-photo">
+              <div className="about-photo__frame">
+                <img
+                  src={sadPortrait}
+                  alt="Sadock Tohon"
+                  className="about-photo__img"
+                />
               </div>
+              <div className="about-location-badge">
+                <p className="about-location-badge__city">{content.locationLine1}</p>
+                <p className="about-location-badge__country">{content.locationLine2}</p>
+              </div>
+            </div>
+          </Reveal>
+
+          <div className="min-w-0">
+            <Reveal>
+              <SectionLabel>{content.label}</SectionLabel>
+              <h2 className="section-title mb-10 max-w-2xl">{content.title}</h2>
+            </Reveal>
+
+            {content.body.map((paragraph, i) => (
+              <Reveal key={paragraph.slice(0, 24)} delay={i + 1}>
+                <p className="about-body">{paragraph}</p>
+              </Reveal>
             ))}
+
+            <Reveal delay={2}>
+              <div className="flex flex-wrap gap-2.5 mt-10">
+                {content.skills.map((skill) => (
+                  <span key={skill} className="about-tag">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </Reveal>
           </div>
         </div>
       </div>
