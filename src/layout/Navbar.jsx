@@ -64,8 +64,8 @@ export const Navbar = () => {
             src={siteLogo}
             alt=""
             className="site-brand__logo"
-            width={36}
-            height={36}
+            width={34}
+            height={34}
           />
           <span className="font-serif text-base tracking-tight">
             ST<span className="text-muted-foreground">.</span>
