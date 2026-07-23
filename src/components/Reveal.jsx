@@ -1,31 +1,94 @@
 import { useEffect, useRef } from "react";
 
-export const Reveal = ({ children, className = "", delay = 0 }) => {
+const VARIANTS = {
+  up: "reveal--up",
+  soft: "reveal--soft",
+  fade: "reveal--fade",
+  slide: "reveal--slide",
+};
+
+const getObserverOptions = () => {
+  const isMobile = window.matchMedia("(max-width: 767px)").matches;
+
+  return {
+    threshold: isMobile ? 0.02 : 0.08,
+    rootMargin: isMobile ? "0px 0px 12% 0px" : "0px 0px -3% 0px",
+  };
+};
+
+export const Reveal = ({
+  children,
+  className = "",
+  delay = 0,
+  variant = "soft",
+}) => {
   const ref = useRef(null);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      el.classList.add("is-visible");
+      return;
+    }
+
+    let observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        el.classList.add("is-visible");
+        observer.unobserve(el);
+      }
+    }, getObserverOptions());
+
+    observer.observe(el);
+
+    const revealIfInView = () => {
+      const rect = el.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const visible =
+        rect.top < viewportHeight * 0.94 && rect.bottom > viewportHeight * 0.06;
+
+      if (visible) {
+        el.classList.add("is-visible");
+        observer.unobserve(el);
+      }
+    };
+
+    requestAnimationFrame(revealIfInView);
+
+    const media = window.matchMedia("(max-width: 767px)");
+    const resetObserver = () => {
+      if (el.classList.contains("is-visible")) return;
+
+      observer.disconnect();
+      observer = new IntersectionObserver(([entry]) => {
         if (entry.isIntersecting) {
           el.classList.add("is-visible");
           observer.unobserve(el);
         }
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
-    );
+      }, getObserverOptions());
+      observer.observe(el);
+      requestAnimationFrame(revealIfInView);
+    };
 
-    observer.observe(el);
-    return () => observer.disconnect();
+    media.addEventListener("change", resetObserver);
+
+    return () => {
+      observer.disconnect();
+      media.removeEventListener("change", resetObserver);
+    };
   }, []);
 
-  const delayClass =
-    delay === 1 ? "reveal-delay-1" : delay === 2 ? "reveal-delay-2" : delay === 3 ? "reveal-delay-3" : "";
+  const variantClass = VARIANTS[variant] ?? VARIANTS.soft;
+  const delayStyle =
+    delay > 0 ? { transitionDelay: `${Math.min(delay, 8) * 130}ms` } : undefined;
 
   return (
-    <div ref={ref} className={`reveal ${delayClass} ${className}`}>
+    <div
+      ref={ref}
+      className={`reveal ${variantClass} ${className}`}
+      style={delayStyle}
+    >
       {children}
     </div>
   );

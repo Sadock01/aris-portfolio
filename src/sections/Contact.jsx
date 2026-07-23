@@ -107,9 +107,9 @@ export const Contact = () => {
           </div>
         </Reveal>
 
-        <div className="contact-cards">
+        <div className="contact-cards stagger-children-mobile">
           {links.map((channel, index) => (
-            <Reveal key={channel.label} delay={index % 4}>
+            <Reveal key={channel.label} delay={(index % 4) + 1}>
               <ContactCard
                 label={channel.label}
                 value={channel.value}

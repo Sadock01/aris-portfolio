@@ -1,0 +1,80 @@
+name: CD - Deploy SadockDev to Contabo
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: deploy-sadockdev-${{ github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout du code
+        uses: actions/checkout@v4
+
+      - name: Configurer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Installer les dependances
+        run: npm ci --no-audit --progress=false
+
+      - name: Build de l'application Vite
+        env:
+          NODE_ENV: production
+          VITE_EMAILJS_SERVICE_ID: ${{ secrets.VITE_EMAILJS_SERVICE_ID }}
+          VITE_EMAILJS_CLIENT_TEMPLATE_ID: ${{ secrets.VITE_EMAILJS_CLIENT_TEMPLATE_ID }}
+          VITE_EMAILJS_TEAM_TEMPLATE_ID: ${{ secrets.VITE_EMAILJS_TEAM_TEMPLATE_ID }}
+          VITE_EMAILJS_PUBLIC_KEY: ${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}
+          VITE_CONTACT_RECIPIENT_EMAIL: ${{ secrets.VITE_CONTACT_RECIPIENT_EMAIL }}
+        run: npm run build
+
+      - name: Installation de la cle SSH
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_KEY }}
+          known_hosts: " "
+          if_key_exists: replace
+
+      - name: Transferer le build statique via Rsync
+        run: |
+          rsync -avz --delete \
+            -e "ssh -o StrictHostKeyChecking=no" \
+            dist/ "deployer@${{ secrets.SSH_HOST }}:/var/www/sadockdev/"
+
+      - name: Relancer le serveur sur le VPS
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: deployer
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            set -euo pipefail
+
+            APP_DIR="/var/www/sadockdev"
+            APP_NAME="sadockdev-app"
+            PORT=3003
+
+            cd "$APP_DIR"
+
+            export NODE_ENV=production
+            export PORT="$PORT"
+            export HOSTNAME=0.0.0.0
+
+            if command -v pm2 >/dev/null 2>&1; then
+              pm2 delete "$APP_NAME" 2>/dev/null || true
+              pm2 start npx --name "$APP_NAME" -- serve -s "$APP_DIR" -l "$PORT"
+              pm2 save
+            else
+              pkill -f "serve.*${PORT}" 2>/dev/null || true
+              nohup npx serve -s "$APP_DIR" -l "$PORT" > "/tmp/${APP_NAME}.log" 2>&1 &
+            fi
+
+            echo "Portfolio SadockDev deploye avec succes sur le port ${PORT} !"

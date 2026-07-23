@@ -105,7 +105,7 @@ export const Hero = () => {
       </div>
 
       <div className="lg:hidden hero-container relative z-10 pb-16">
-        <Reveal delay={2}>
+        <Reveal delay={1} variant="soft">
           <div className="mx-auto h-[260px] w-[260px]">
             <ParticlePortrait className="h-full w-full" />
           </div>

@@ -80,7 +80,7 @@ export const EducationRecognition = () => {
         <div className="credentials-grid">
           <Reveal>
             <SectionLabel>{labels.recognitionLabel}</SectionLabel>
-            <ul className="credentials-list">
+            <ul className="credentials-list stagger-children">
               {labels.recognition.map((item) => (
                 <li key={`${item.date}-${item.text.slice(0, 24)}`} className="credentials-item">
                   <span className="credentials-date">{item.date}</span>

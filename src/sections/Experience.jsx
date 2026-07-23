@@ -206,7 +206,7 @@ export const Experience = () => {
           <div className="journey-timeline-wrap">
             <div ref={timelineRef} className="journey-timeline">
               {journey.map((item, idx) => (
-                <Reveal key={`${item.org}-${idx}`} delay={idx % 3}>
+                <Reveal key={`${item.org}-${idx}`} delay={(idx % 5) + 1} variant="slide">
                   <article className="journey-entry">
                     <span className="journey-entry__dot" aria-hidden="true" />
                     <div className="journey-entry__content">

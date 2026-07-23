@@ -9,7 +9,7 @@ const MissionCard = ({ label, statement, points }) => (
       {statement}
       <span className="mission-orbit" aria-hidden="true" />
     </h3>
-    <ul className="mission-list">
+    <ul className="mission-list stagger-children">
       {points.map((point) => (
         <li key={point}>
           <span className="mission-bullet" aria-hidden="true" />

@@ -5,6 +5,9 @@ export const PROFILE_LINKS = {
   phone: "tel:+22951384757",
 };
 
+export const SITE_URL = "https://sadockdev.online";
+export const SITE_NAME = "Sadock Tohon · Software Engineer";
+export const SITE_IMAGE = `${SITE_URL}/miniature_portefolio.png`;
 export const PROFILE_EMAIL = "tohonaris03@gmail.com";
 export const PROFILE_PHONE = "+229 51384757";
 export const RESUME_FILENAME = "Sadock-Tohon-Resume.pdf";

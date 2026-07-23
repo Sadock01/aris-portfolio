@@ -1,4 +1,5 @@
 import { Navbar } from "@/layout/Navbar";
+import { MobileScrollProgress } from "@/components/MobileScrollProgress";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { Hero } from "@/sections/Hero";
 import { Stats } from "@/sections/Stats";
@@ -15,6 +16,7 @@ function App() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
+      <MobileScrollProgress />
       <ScrollProgress />
       <main>
         <Hero />

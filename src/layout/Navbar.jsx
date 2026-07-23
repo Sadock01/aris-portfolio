@@ -1,6 +1,7 @@
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { PROFILE_LINKS } from "@/constants/profile";
 import { useLanguage } from "@/i18n/LanguageContext";
+import siteLogo from "@/assets/miniature_portefolio.png";
 import { Github, Linkedin, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -56,10 +57,19 @@ export const Navbar = () => {
       <nav className="hero-container flex h-[4.5rem] items-center justify-between">
         <a
           href="#hero"
-          className="font-serif text-base tracking-tight hover:opacity-60 transition-opacity duration-300 shrink-0"
+          className="site-brand hover:opacity-80 transition-opacity duration-300 shrink-0"
           aria-label="Sadock Tohon"
         >
-          ST<span className="text-muted-foreground">.</span>
+          <img
+            src={siteLogo}
+            alt=""
+            className="site-brand__logo"
+            width={34}
+            height={34}
+          />
+          <span className="font-serif text-base tracking-tight">
+            ST<span className="text-muted-foreground">.</span>
+          </span>
         </a>
 
         <div className="hidden lg:flex items-center gap-8 ml-auto mr-8">
