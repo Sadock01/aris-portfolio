@@ -2,7 +2,7 @@ export const PROFILE_LINKS = {
   linkedin: "https://www.linkedin.com/in/sadock-tohon-0b265b271",
   github: "https://github.com/Sadock01",
   email: "mailto:tohonaris03@gmail.com",
-  phone: "tel:+22951384757",
+  whatsapp: "https://wa.me/22951384757",
 };
 
 export const SITE_URL = "https://sadockdev.online";

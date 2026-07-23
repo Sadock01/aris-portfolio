@@ -30,10 +30,10 @@ const channels = {
       action: "View profile",
     },
     {
-      label: "Phone",
+      label: "WhatsApp",
       value: PROFILE_PHONE,
-      href: PROFILE_LINKS.phone,
-      action: "Call me",
+      href: PROFILE_LINKS.whatsapp,
+      action: "Message me",
     },
   ],
   fr: [
@@ -56,10 +56,10 @@ const channels = {
       action: "Voir le profil",
     },
     {
-      label: "Telephone",
+      label: "WhatsApp",
       value: PROFILE_PHONE,
-      href: PROFILE_LINKS.phone,
-      action: "Appeler",
+      href: PROFILE_LINKS.whatsapp,
+      action: "M'ecrire",
     },
   ],
 };
