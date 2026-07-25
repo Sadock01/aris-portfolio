@@ -8,8 +8,8 @@ const content = {
     educationLabel: "Education & development",
     recognition: [
       {
-        date: "Feb 2025",
-        text: "Software engineering internship — production web, mobile, mail server, and QA delivery over 1 year 3 months.",
+        date: "Apr 2026",
+        text: "Software engineering internship completed — production web, mobile, mail server, and QA delivery over 1 year 3 months.",
       },
       {
         date: "2025",
@@ -39,8 +39,8 @@ const content = {
     educationLabel: "Formation & developpement",
     recognition: [
       {
-        date: "Fev 2025",
-        text: "Stage en ingenierie logicielle — livraison web, mobile, serveur mail et QA sur 1 an 3 mois.",
+        date: "Avr 2026",
+        text: "Stage en ingenierie logicielle termine — livraison web, mobile, serveur mail et QA sur 1 an 3 mois.",
       },
       {
         date: "2025",
