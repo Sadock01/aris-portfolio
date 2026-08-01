@@ -3,13 +3,13 @@ import { useLanguage } from "@/i18n/LanguageContext";
 
 const SECTIONS = [
   { id: "hero", labels: { en: "Home", fr: "Accueil" } },
-  { id: "about", labels: { en: "About", fr: "A propos" } },
-  { id: "systems", labels: { en: "Systems", fr: "Systems" } },
+  { id: "about", labels: { en: "About", fr: "À propos" } },
+  { id: "systems", labels: { en: "Systems", fr: "Systèmes" } },
   { id: "volunteering", labels: { en: "Volunteering", fr: "Volontariat" } },
   { id: "journey", labels: { en: "Journey", fr: "Parcours" } },
   { id: "education", labels: { en: "Education", fr: "Formation" } },
   { id: "stats", labels: { en: "Impact", fr: "Impact" } },
-  { id: "testimonials", labels: { en: "Praise", fr: "Temoignages" } },
+  { id: "testimonials", labels: { en: "Praise", fr: "Témoignages" } },
   { id: "contact", labels: { en: "Contact", fr: "Contact" } },
 ];
 

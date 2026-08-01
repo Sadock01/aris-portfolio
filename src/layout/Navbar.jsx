@@ -15,7 +15,7 @@ const navLinks = {
   ],
   fr: [
     { href: "#hero", label: "Accueil" },
-    { href: "#about", label: "A propos" },
+    { href: "#about", label: "À propos" },
     { href: "#volunteering", label: "Volontariat" },
     { href: "#journey", label: "Parcours" },
     { href: "#contact", label: "Contact" },

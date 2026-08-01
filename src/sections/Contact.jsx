@@ -41,7 +41,7 @@ const channels = {
       label: "Email",
       value: PROFILE_EMAIL,
       href: PROFILE_LINKS.email,
-      action: "M'ecrire",
+      action: "M'écrire",
     },
     {
       label: "LinkedIn",
@@ -59,7 +59,7 @@ const channels = {
       label: "WhatsApp",
       value: PROFILE_PHONE,
       href: PROFILE_LINKS.whatsapp,
-      action: "M'ecrire",
+      action: "M'écrire",
     },
   ],
 };
@@ -84,10 +84,10 @@ export const Contact = () => {
       title: "Construisons quelque chose de durable.",
       availability:
         "Disponible pour freelance, collaborations & tech volunteering ONG",
-      start: "Demarrer une conversation",
-      resume: "Telecharger le CV",
+      start: "Démarrer une conversation",
+      resume: "Télécharger le CV",
       work: "Parcours",
-      location: "Abomey-Calavi, Benin",
+      location: "Abomey-Calavi, Bénin",
     },
   }[language];
 

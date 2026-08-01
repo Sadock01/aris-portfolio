@@ -11,10 +11,10 @@ const copy = {
     close: "Close preview",
   },
   fr: {
-    title: "Apercu du CV",
-    subtitle: "Consultez le CV ci-dessous, puis telechargez-le si vous le souhaitez.",
-    download: "Telecharger le PDF",
-    close: "Fermer l'apercu",
+    title: "Aperçu du CV",
+    subtitle: "Consultez le CV ci-dessous, puis téléchargez-le si vous le souhaitez.",
+    download: "Télécharger le PDF",
+    close: "Fermer l'aperçu",
   },
 };
 

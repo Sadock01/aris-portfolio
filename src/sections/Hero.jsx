@@ -18,10 +18,10 @@ export const Hero = () => {
       ctaResume: "Resume",
     },
     fr: {
-      location: "Abomey-Calavi, Benin",
-      tags: "Ingenierie logicielle / Flutter / React / Next.js / Django",
+      location: "Abomey-Calavi, Bénin",
+      tags: "Ingénierie logicielle / Flutter / React / Next.js / Django",
       headline:
-        "Je construis des produits web et mobile evolutifs — et des solutions gratuites pour les ONG.",
+        "Je construis des produits web et mobile évolutifs — et des solutions gratuites pour les ONG.",
       ctaWork: "Voir le parcours",
       ctaContact: "Me contacter",
       ctaResume: "CV",

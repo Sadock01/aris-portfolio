@@ -32,19 +32,19 @@ const testimonials = {
       quote:
         "Sadock livre un code propre et fiable, avec une communication claire entre parties techniques et non techniques.",
       author: "Team Lead",
-      role: "Entreprise technologique · Benin",
+      role: "Entreprise technologique · Bénin",
       initials: "TL",
     },
     {
       quote:
-        "Forte ownership sur le projet ERP — de l'architecture backend a la livraison frontend.",
-      author: "Client prive",
+        "Forte ownership sur le projet ERP — de l'architecture backend à la livraison frontend.",
+      author: "Client privé",
       role: "ERP Nodus · Remote",
       initials: "CP",
     },
     {
       quote:
-        "Volontaire dedie avec un vrai engagement communautaire et interculturel.",
+        "Volontaire dédié avec un vrai engagement communautaire et interculturel.",
       author: "Coordinateur",
       role: "Takeshi Nihongo Gakkou · Cotonou",
       initials: "TC",
@@ -63,7 +63,7 @@ export const Testimonials = () => {
     },
     fr: {
       label: "Ils en parlent",
-      title: "Recommande par des collegues et collaborateurs.",
+      title: "Recommandé par des collègues et collaborateurs.",
       more: "Plus sur LinkedIn",
     },
   }[language];

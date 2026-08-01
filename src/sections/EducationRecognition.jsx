@@ -36,15 +36,15 @@ const content = {
   },
   fr: {
     recognitionLabel: "Reconnaissance",
-    educationLabel: "Formation & developpement",
+    educationLabel: "Formation & développement",
     recognition: [
       {
         date: "Avr 2026",
-        text: "Stage en ingenierie logicielle termine — livraison web, mobile, serveur mail et QA sur 1 an 3 mois.",
+        text: "Stage en ingénierie logicielle terminé — livraison web, mobile, serveur mail et QA sur 1 an 3 mois.",
       },
       {
         date: "2025",
-        text: "Projet ERP freelance livre pour un client prive avec Next.js, Django et PostgreSQL.",
+        text: "Projet ERP freelance livré pour un client privé avec Next.js, Django et PostgreSQL.",
       },
       {
         date: "2025",
@@ -52,11 +52,11 @@ const content = {
       },
       {
         date: "2025",
-        text: "Produit fintech personnel livre — interface crypto trading avec dashboard analytics.",
+        text: "Produit fintech personnel livré — interface crypto trading avec dashboard analytics.",
       },
     ],
-    degree: "Licence Professionnelle en Genie Logiciel",
-    school: "IFRI · Universite d'Abomey-Calavi · Benin",
+    degree: "Licence Professionnelle en Génie Logiciel",
+    school: "IFRI · Université d'Abomey-Calavi · Bénin",
     courses: [
       "Flutter & Dart",
       "React / Next.js",

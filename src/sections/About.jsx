@@ -26,15 +26,15 @@ export const About = () => {
       locationLine2: "Benin",
     },
     fr: {
-      label: "A propos",
+      label: "À propos",
       title:
-        "Je construis pour les equipes, les utilisateurs et les communautes qui ont besoin de logiciels fiables.",
+        "Je construis pour les équipes, les utilisateurs et les communautés qui ont besoin de logiciels fiables.",
       body: [
-        "Je suis ingenieur logiciel base a Abomey-Calavi, Benin, specialise en Flutter, React, Next.js et Django. Je transforme les idees produit en solutions web et mobile evolutives.",
-        "En plus du travail commercial, je consacre du temps au tech volunteering : creer des outils numeriques pour les ONG sans frais de developpement.",
+        "Je suis ingénieur logiciel basé à Abomey-Calavi, Bénin, spécialisé en Flutter, React, Next.js et Django. Je transforme les idées produit en solutions web et mobile évolutives.",
+        "En plus du travail commercial, je consacre du temps au tech volunteering : créer des outils numériques pour les ONG sans frais de développement.",
       ],
       skills: [
-        "Ingenierie logicielle",
+        "Ingénierie logicielle",
         "Flutter",
         "React / Next.js",
         "Django",
@@ -42,7 +42,7 @@ export const About = () => {
         "Volontariat Tech",
       ],
       locationLine1: "Abomey-Calavi",
-      locationLine2: "Benin",
+      locationLine2: "Bénin",
     },
   }[language];
 

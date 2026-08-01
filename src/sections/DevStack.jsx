@@ -51,15 +51,15 @@ export const DevStack = () => {
       ],
     },
     fr: {
-      label: "Intelligence ingenierie",
-      title: "Des outils qui font livrer les systemes.",
+      label: "Intelligence ingénierie",
+      title: "Des outils qui font livrer les systèmes.",
       intro: (
         <>
-          Au-dela des livraisons, je construis le stack qui les porte.{" "}
-          <Highlight>L&apos;ingenierie full-stack</Highlight> relie mobile, web et
+          Au-delà des livraisons, je construis le stack qui les porte.{" "}
+          <Highlight>L&apos;ingénierie full-stack</Highlight> relie mobile, web et
           backend — avec <Highlight>Flutter</Highlight>,{" "}
           <Highlight>Next.js</Highlight> et <Highlight>Django</Highlight> pour
-          garder produit et code alignes du prototype a la production.
+          garder produit et code alignés du prototype à la production.
         </>
       ),
       items: [
@@ -67,25 +67,25 @@ export const DevStack = () => {
           dot: "gold",
           name: "Flutter",
           description:
-            "Apps mobile cross-platform, performantes et soignees.",
+            "Apps mobile cross-platform, performantes et soignées.",
         },
         {
           dot: "teal",
           name: "Next.js",
           description:
-            "Interfaces web evolutives, SSR et tableaux de bord produit.",
+            "Interfaces web évolutives, SSR et tableaux de bord produit.",
         },
         {
           dot: "violet",
           name: "REST API",
           description:
-            "Endpoints Django, authentification et logique metier.",
+            "Endpoints Django, authentification et logique métier.",
         },
         {
           dot: "blue",
           name: "PostgreSQL",
           description:
-            "Donnees structurees, requetes fiables et persistance durable.",
+            "Données structurées, requêtes fiables et persistance durable.",
         },
       ],
     },

@@ -45,19 +45,19 @@ export const MissionVision = () => {
     fr: {
       missionTitle: "Ma mission",
       mission:
-        "Construire des logiciels fiables et accessibles, et des solutions numeriques gratuites qui simplifient la vie des equipes, des utilisateurs et des ONG.",
+        "Construire des logiciels fiables et accessibles, et des solutions numériques gratuites qui simplifient la vie des équipes, des utilisateurs et des ONG.",
       missionPoints: [
-        "Livrer du code pret pour la production, propre et maintenable",
-        "Faire de la performance et de l'accessibilite une priorite par defaut",
-        "Accompagner les ONG avec des outils pro sans frais de developpement",
+        "Livrer du code prêt pour la production, propre et maintenable",
+        "Faire de la performance et de l'accessibilité une priorité par défaut",
+        "Accompagner les ONG avec des outils pro sans frais de développement",
       ],
       visionTitle: "Ma vision",
       vision:
-        "Une technologie qui ouvre des portes — pour les entreprises, les communautes et la prochaine generation de builders en Afrique et ailleurs.",
+        "Une technologie qui ouvre des portes — pour les entreprises, les communautés et la prochaine génération de builders en Afrique et ailleurs.",
       visionPoints: [
-        "Relier l'ingenierie a un impact social concret",
-        "Continuer a apprendre, innover et elever le niveau a chaque projet",
-        "Collaborer au-dela des cultures, des langues et des disciplines",
+        "Relier l'ingénierie à un impact social concret",
+        "Continuer à apprendre, innover et élever le niveau à chaque projet",
+        "Collaborer au-delà des cultures, des langues et des disciplines",
       ],
     },
   }[language];

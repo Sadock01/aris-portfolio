@@ -28,18 +28,18 @@ export const Stats = () => {
       stats: [
         {
           value: "2+",
-          label: "Annees d'experience",
+          label: "Années d'expérience",
           detail: "Stages, freelance et projets personnels.",
         },
         {
           value: "6+",
-          label: "Projets livres",
+          label: "Projets livrés",
           detail: "Web, mobile, ERP et fintech.",
         },
         {
           value: "3",
           label: "Partenariats ONG",
-          detail: "Volontariat tech pour organisations a mission.",
+          detail: "Volontariat tech pour organisations à mission.",
         },
       ],
     },

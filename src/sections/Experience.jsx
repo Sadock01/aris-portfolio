@@ -57,27 +57,27 @@ const journeyEn = [
 const journeyFr = [
   {
     org: "Entreprise technologique locale",
-    role: "Stagiaire Developpeur Logiciel",
-    period: "Fev 2025 — Avr 2026",
-    title: "La ou tout a commence",
+    role: "Stagiaire Développeur Logiciel",
+    period: "Fév 2025 — Avr 2026",
+    title: "Là où tout a commencé",
     description:
-      "Stage de 1 an 3 mois : maintenance web/mobile, serveur mail, plateforme shop management et tests — comprendre comment tournent les systemes en production.",
+      "Stage de 1 an 3 mois : maintenance web/mobile, serveur mail, plateforme shop management et tests — comprendre comment tournent les systèmes en production.",
   },
   {
     org: "ERP Nodus · Remote",
-    role: "Developpeur Freelance",
+    role: "Développeur Freelance",
     period: "2025",
     title: "Construire pour le web",
     description:
-      "Projet ERP remunere avec Next.js, Django et PostgreSQL — de l'architecture backend a la livraison frontend.",
+      "Projet ERP rémunéré avec Next.js, Django et PostgreSQL — de l'architecture backend à la livraison frontend.",
   },
   {
     org: "Projet personnel",
-    role: "Developpeur",
+    role: "Développeur",
     period: "2025",
     title: "Livrer des produits personnels",
     description:
-      "Interface crypto trading avec dashboard analytics et une UX orientee marche.",
+      "Interface crypto trading avec dashboard analytics et une UX orientée marché.",
   },
   {
     org: "Takeshi Nihongo Gakkou · Cotonou",
@@ -85,15 +85,15 @@ const journeyFr = [
     period: "Volontariat",
     title: "Leadership interculturel",
     description:
-      "Appui aux operations d'une ecole de langue japonaise et aux activites etudiantes.",
+      "Appui aux opérations d'une école de langue japonaise et aux activités étudiantes.",
   },
   {
-    org: "ANEEB · Benin",
+    org: "ANEEB · Bénin",
     role: "Volontaire",
     period: "Volontariat",
     title: "Entrepreneuriat jeunesse",
     description:
-      "Organisation d'evenements et initiatives pour etudiants entrepreneurs.",
+      "Organisation d'événements et initiatives pour étudiants entrepreneurs.",
   },
   {
     org: "International Youth Fellowship",
@@ -157,9 +157,9 @@ export const Experience = () => {
     },
     fr: {
       label: "Mon parcours",
-      title: "Ou j'ai travaille.",
+      title: "Où j'ai travaillé.",
       intro:
-        "Du stage au freelance et au volontariat — un parcours forge par la construction de vrais produits, l'apprentissage en production et l'engagement au-dela du travail remunere.",
+        "Du stage au freelance et au volontariat — un parcours forgé par la construction de vrais produits, l'apprentissage en production et l'engagement au-delà du travail rémunéré.",
       foundations: "Fondations",
       today: "Aujourd'hui",
     },
